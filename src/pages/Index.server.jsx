@@ -76,7 +76,7 @@ export default function Index({country = {isoCode: 'US'}}) {
   });
 
   const collections = data ? flattenConnection(data.collections) : [];
-  const featuredProductsCollection = collections[1];
+  const featuredProductsCollection = collections[2];
   const featuredProducts = featuredProductsCollection
     ? flattenConnection(featuredProductsCollection.products)
     : null;
@@ -133,8 +133,8 @@ export default function Index({country = {isoCode: 'US'}}) {
 const QUERY = gql`
   query indexContent(
     $country: CountryCode
-    $numCollections: Int = 2
-    $numProducts: Int = 4
+    $numCollections: Int = 4
+    $numProducts: Int = 6
     $includeReferenceMetafieldDetails: Boolean = false
     $numProductMetafields: Int = 0
     $numProductVariants: Int = 250
