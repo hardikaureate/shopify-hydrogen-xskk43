@@ -97,7 +97,7 @@ export default function Footer({ collection, product }) {
                 )
               })}
               <li className="flex items-center text-sm font-medium text-gray-600 hover:text-gray-900">
-                <Link to={`/collections/${collection[2]?.handle}`}>
+                <Link to={`/collections/${collection?.handle}`}>
                   Collection
                 </Link>
               </li>
