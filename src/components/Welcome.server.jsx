@@ -140,7 +140,7 @@ export default function Welcome() {
         </div> */}
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+      {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         <StorefrontInfo
           shopName={shopName}
           totalProducts={totalProducts}
@@ -150,7 +150,7 @@ export default function Welcome() {
           firstProductPath={firstProduct}
           firstCollectionPath={firstCollection}
         />
-      </div>
+      </div> */}
     </div>
   );
 }
