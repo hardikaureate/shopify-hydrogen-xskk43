@@ -124,7 +124,7 @@ export default function Welcome() {
         <h1 className="font-extrabold mb-4 text-5xl md:text-7xl">
           Hello, Aureate User
         </h1>
-        <p className="text-lg mb-8">
+        {/* <p className="text-lg mb-8">
           Welcome to your custom storefront. Let&rsquo;s get building.
         </p>
         <div className="flex flex-col lg:flex-row justify-center items-center gap-8 text-gray-700">
@@ -137,7 +137,7 @@ export default function Welcome() {
             url="https://github.com/Shopify/hydrogen-examples"
             label="Explore Hydrogen examples"
           />
-        </div>
+        </div> */}
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
