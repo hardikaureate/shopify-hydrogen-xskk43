@@ -8,67 +8,10 @@ import {
 import gql from 'graphql-tag';
 
 import Layout from '../components/Layout.server';
-import FeaturedCollection from '../components/FeaturedCollection.server';
 import ProductCard from '../components/ProductCard.server';
-import Welcome from '../components/Welcome.server';
-import Beautycat from '../components/Beautycat.server';
 
-function GradientBackground() {
-  return (
-    <div className="fixed top-0 w-full h-3/5 overflow-hidden">
-      <div className="absolute w-full h-full bg-gradient-to-t from-gray-50 z-10" />
 
-      <svg
-        viewBox="0 0 960 743"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-        className="filter blur-[30px]"
-        aria-hidden="true"
-      >
-        <defs>
-          <path fill="#fff" d="M0 0h960v540H0z" id="reuse-0" />
-        </defs>
-        <g clipPath="url(#a)">
-          <use xlinkHref="#reuse-0" />
-          <path d="M960 0H0v743h960V0Z" fill="#7CFBEE" />
-          <path
-            d="M831 380c200.48 0 363-162.521 363-363s-162.52-363-363-363c-200.479 0-363 162.521-363 363s162.521 363 363 363Z"
-            fill="#4F98D0"
-          />
-          <path
-            d="M579 759c200.479 0 363-162.521 363-363S779.479 33 579 33 216 195.521 216 396s162.521 363 363 363Z"
-            fill="#7CFBEE"
-          />
-          <path
-            d="M178 691c200.479 0 363-162.521 363-363S378.479-35 178-35c-200.4794 0-363 162.521-363 363s162.5206 363 363 363Z"
-            fill="#4F98D0"
-          />
-          <path
-            d="M490 414c200.479 0 363-162.521 363-363S690.479-312 490-312 127-149.479 127 51s162.521 363 363 363Z"
-            fill="#4F98D0"
-          />
-          <path
-            d="M354 569c200.479 0 363-162.521 363-363 0-200.47937-162.521-363-363-363S-9 5.52063-9 206c0 200.479 162.521 363 363 363Z"
-            fill="#7CFBEE"
-          />
-          <path
-            d="M630 532c200.479 0 363-162.521 363-363 0-200.4794-162.521-363-363-363S267-31.4794 267 169c0 200.479 162.521 363 363 363Z"
-            fill="#4F98D0"
-          />
-        </g>
-        <path fill="#fff" d="M0 540h960v203H0z" />
-        <defs>
-          <clipPath id="a">
-            <use xlinkHref="#reuse-0" />
-          </clipPath>
-        </defs>
-      </svg>
-    </div>
-  );
-}
-
-export default function Index({country = {isoCode: 'US'}}) {
+export default function Beautycat({country = {isoCode: 'US'}}) {
   const {data} = useShopQuery({
     query: QUERY,
     variables: {
@@ -77,7 +20,7 @@ export default function Index({country = {isoCode: 'US'}}) {
   });
 
   const collections = data ? flattenConnection(data.collections) : [];
-  const featuredProductsCollection = collections[2];
+  const featuredProductsCollection = collections[0];
   const featuredProducts = featuredProductsCollection
     ? flattenConnection(featuredProductsCollection.products)
     : null;
@@ -85,7 +28,7 @@ export default function Index({country = {isoCode: 'US'}}) {
     collections && collections.length > 1 ? collections[1] : collections[0];
 
   return (
-    <Layout hero={<GradientBackground />}>
+    <Layout>
       <div className="relative mb-12">
         <Welcome />
         <div className="bg-white p-12 shadow-xl rounded-xl mb-10">
@@ -104,7 +47,7 @@ export default function Index({country = {isoCode: 'US'}}) {
                   </Link>
                 </span>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
                 {featuredProducts.map((product) => (
                   <div key={product.id}>
                     <ProductCard product={product} />
@@ -123,9 +66,6 @@ export default function Index({country = {isoCode: 'US'}}) {
           ) : null}
         </div>
         <FeaturedCollection collection={featuredCollection} />
-        <Beautycat />
-        <div className="yotpo yotpo-pictures-widget" data-gallery-id="60789ba4d65534434cb467da" style={{width: '90%', margin: 'auto', paddingBottom: '50px'}}>
-    </div>
       </div>
     </Layout>
   );
@@ -134,9 +74,8 @@ export default function Index({country = {isoCode: 'US'}}) {
 const QUERY = gql`
   query indexContent(
     $country: CountryCode
-    $numCollections: Int = 4
-    $numProducts: Int = 8
-    $includeReferenceMetafieldDetails: Boolean = false
+    $numCollections: Int = 2
+    $numProducts: Int = 3
     $numProductMetafields: Int = 0
     $numProductVariants: Int = 250
     $numProductMedia: Int = 1
