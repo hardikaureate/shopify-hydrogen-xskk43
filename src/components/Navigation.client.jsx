@@ -23,7 +23,7 @@ export default function Navigation({collections}) {
     <nav className="hidden lg:block text-center">
       <ul className="md:flex items-center justify-center">
         {console.log('allcollections',allcollections)}
-        {collections.map((collection) => (
+        {allcollections.map((collection) => (
           <li key={collection.id}>
             <Link
               to={`/collections/${collection.handle}`}
