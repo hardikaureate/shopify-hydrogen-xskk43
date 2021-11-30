@@ -10,7 +10,7 @@ export default function Navigation() {
   const { data } = useShopQuery({
     query: QUERY,
     variables: {
-      numCollections: 5,
+      numCollections: 3,
     },
     cache: {
       maxAge: 60,
