@@ -103,7 +103,7 @@ export default function Index({country = {isoCode: 'US'}}) {
                   </Link>
                 </span>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 {featuredProducts.map((product) => (
                   <div key={product.id}>
                     <ProductCard product={product} />
@@ -133,7 +133,7 @@ const QUERY = gql`
   query indexContent(
     $country: CountryCode
     $numCollections: Int = 4
-    $numProducts: Int = 6
+    $numProducts: Int = 8
     $includeReferenceMetafieldDetails: Boolean = false
     $numProductMetafields: Int = 0
     $numProductVariants: Int = 250
