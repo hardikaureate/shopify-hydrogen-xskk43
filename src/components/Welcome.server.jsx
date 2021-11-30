@@ -1,6 +1,5 @@
 import { useShopQuery, flattenConnection, Link } from "@shopify/hydrogen";
 import gql from "graphql-tag";
-import MySlider from "./MySlider.server";
 
 function ExternalIcon() {
   return (
@@ -46,7 +45,7 @@ function StorefrontInfo({ shopName, totalProducts, totalCollections }) {
       </p>
       {totalProducts === 0 && totalCollections === 0 && (
         <div className="py-2 px-3 bg-red-100 text-md">
-          Use the{" "}
+          Use the
           <a
             href="https://shopify.dev/apps/tools/cli/getting-started"
             className="text-primary font-mono font-bold underline"
@@ -54,7 +53,7 @@ function StorefrontInfo({ shopName, totalProducts, totalCollections }) {
             rel="noreferrer"
           >
             Shopify CLI
-          </a>{" "}
+          </a>
           to populate sample products and collections.
         </div>
       )}
@@ -140,7 +139,7 @@ export default function Welcome() {
           />
         </div>
       </div>
-      <MySlider />
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
         <StorefrontInfo
           shopName={shopName}
