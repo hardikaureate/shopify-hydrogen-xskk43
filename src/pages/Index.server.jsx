@@ -81,7 +81,7 @@ export default function Index({country = {isoCode: 'US'}}) {
     ? flattenConnection(featuredProductsCollection.products)
     : null;
   const featuredCollection =
-    collections && collections.length > 1 ? collections[0] : collections[0];
+    collections && collections.length > 1 ? collections[1] : collections[0];
 
   return (
     <Layout hero={<GradientBackground />}>
