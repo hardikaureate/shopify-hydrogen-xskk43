@@ -1,11 +1,26 @@
-import {Link} from '@shopify/hydrogen';
+import { Link } from '@shopify/hydrogen';
 import {
+  Image,
   useShopQuery,
   flattenConnection,
+  LocalizationProvider,
 } from '@shopify/hydrogen';
+import gql from 'graphql-tag';
 
-export default function Footer({collection, product}) {
-  console.log({collection})
+export default function Footer({ collection, product }) {
+    const { data } = useShopQuery({
+      query: QUERY,
+      variables: {
+        numCollections: 5,
+      },
+      cache: {
+        maxAge: 60,
+        staleWhileRevalidate: 60 * 10,
+      },
+    });
+
+    const allcollections = data ? flattenConnection(data.collections) : null;
+  //console.log('myallcollection', allcollections)
   return (
     <footer role="contentinfo">
       <div className="relative bg-white border-t border-b border-black border-opacity-5">
@@ -72,13 +87,19 @@ export default function Footer({collection, product}) {
               <li className="flex items-center text-sm font-medium text-gray-600 hover:text-gray-900">
                 <Link to={`/products/${product?.handle}`}>Product</Link>
               </li>
+              {allcollections && allcollections.map((footercollection, i) => {
+                return (
+                  <li>
+                    <Link to={`/collections/${footercollection?.handle}`} key={i}>
+                      {footercollection.title}
+                    </Link>
+                  </li>
+                )
+              })}
               <li className="flex items-center text-sm font-medium text-gray-600 hover:text-gray-900">
                 <Link to={`/collections/${collection?.handle}`}>
                   Collection
                 </Link>
-              </li>
-              <li className="flex items-center text-sm font-medium text-gray-600 hover:text-gray-900">
-                <Link to="/404">404</Link>
               </li>
             </ul>
           </div>
@@ -101,8 +122,39 @@ export default function Footer({collection, product}) {
         </div>
       </div>
       <div className="py-6 px-4 md:px-8 bg-gray-50">
-        <p className="text-gray-600">&copy;©<span dangerouslySetInnerHTML={{ "__html": "&copy;" }} /> {new Date().getFullYear()} Shopifyy</p>
+        <p className="text-gray-600">© 2021 Shopify</p>
       </div>
     </footer>
   );
 }
+
+
+
+const QUERY = gql`
+  query indexContent($numCollections: Int!) {
+    shop {
+      name
+    }
+    collections(first: $numCollections) {
+      edges {
+        node {
+          description
+          handle
+          id
+          title
+          image {
+            ...ImageFragment
+          }
+        }
+      }
+    }
+    products(first: 1) {
+      edges {
+        node {
+          handle
+        }
+      }
+    }
+  }
+  ${Image.Fragment}
+`;
