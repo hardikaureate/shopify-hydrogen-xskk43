@@ -6,7 +6,7 @@ import {
 import gql from 'graphql-tag';
 
 export default function Navigation({collections}) {
-  console.log('hdrcategory',collections)
+  //console.log('hdrcategory',collections)
   const { data } = useShopQuery({
     query: QUERY,
     variables: {
@@ -22,8 +22,8 @@ export default function Navigation({collections}) {
   return (
     <nav className="hidden lg:block text-center">
       <ul className="md:flex items-center justify-center">
-        {console.log('allcollections',allcollections)}
-        {allcollections.map((collection) => (
+        {/* {console.log('allcollections',allcollections)} */}
+        {collections.map((collection) => (
           <li key={collection.id}>
             <Link
               to={`/collections/${collection.handle}`}
