@@ -27,6 +27,7 @@ export default function Beautycat({country = {isoCode: 'US'}}) {
     : null;
   const featuredCollection =
     collections && collections.length > 1 ? collections[1] : collections[0];
+  console.log('beautyProduct', collections )
 
   return (
    
