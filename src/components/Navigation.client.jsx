@@ -5,7 +5,7 @@ import {
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
 
-export default function Navigation({collections}) {
+export default function Navigation() {
   //console.log('hdrcategory',collections)
   const { data } = useShopQuery({
     query: QUERY,
@@ -23,7 +23,7 @@ export default function Navigation({collections}) {
     <nav className="hidden lg:block text-center">
       <ul className="md:flex items-center justify-center">
         {/* {console.log('allcollections',allcollections)} */}
-        {collections.map((collection) => (
+        {allcollections.map((collection) => (
           <li key={collection.id}>
             <Link
               to={`/collections/${collection.handle}`}
