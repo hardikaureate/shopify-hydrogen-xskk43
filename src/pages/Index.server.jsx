@@ -76,12 +76,12 @@ export default function Index({country = {isoCode: 'US'}}) {
   });
 
   const collections = data ? flattenConnection(data.collections) : [];
-  const featuredProductsCollection = collections[4];
+  const featuredProductsCollection = collections[2];
   const featuredProducts = featuredProductsCollection
     ? flattenConnection(featuredProductsCollection.products)
     : null;
   const featuredCollection =
-    collections && collections.length > 1 ? collections[3] : collections[0];
+    collections && collections.length > 1 ? collections[0] : collections[0];
 
   return (
     <Layout hero={<GradientBackground />}>
