@@ -93,7 +93,6 @@ export default function Index({country = {isoCode: 'US'}}) {
               <div className="flex justify-between items-center mb-8 text-md font-medium">
                 <span className="text-black uppercase">
                   {featuredProductsCollection.title}
-                  {featuredProductsCollection.title}
                 </span>
                 <span className="hidden md:inline-flex">
                   <Link
