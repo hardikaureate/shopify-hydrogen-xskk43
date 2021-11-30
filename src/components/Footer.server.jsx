@@ -1,6 +1,11 @@
 import {Link} from '@shopify/hydrogen';
+import {
+  useShopQuery,
+  flattenConnection,
+} from '@shopify/hydrogen';
 
 export default function Footer({collection, product}) {
+  console.log({collection})
   return (
     <footer role="contentinfo">
       <div className="relative bg-white border-t border-b border-black border-opacity-5">
@@ -96,7 +101,7 @@ export default function Footer({collection, product}) {
         </div>
       </div>
       <div className="py-6 px-4 md:px-8 bg-gray-50">
-        <p className="text-gray-600">© 2021 Shopify</p>
+        <p className="text-gray-600">&copy;©<span dangerouslySetInnerHTML={{ "__html": "&copy;" }} /> {new Date().getFullYear()} Shopifyy</p>
       </div>
     </footer>
   );
