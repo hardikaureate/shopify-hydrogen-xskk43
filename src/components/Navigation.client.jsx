@@ -51,9 +51,6 @@ const QUERY = gql`
           handle
           id
           title
-          image {
-            ...ImageFragment
-          }
         }
       }
     }
