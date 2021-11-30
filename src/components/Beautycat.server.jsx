@@ -7,7 +7,7 @@ import {
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
 
-import Layout from '../components/Layout.server';
+
 import ProductCard from '../components/ProductCard.server';
 
 
@@ -16,11 +16,12 @@ export default function Beautycat({country = {isoCode: 'US'}}) {
     query: QUERY,
     variables: {
       country: country.isoCode,
+      numCollections: 5
     },
   });
 
   const collections = data ? flattenConnection(data.collections) : [];
-  const featuredProductsCollection = collections[0];
+  const featuredProductsCollection = collections[2];
   const featuredProducts = featuredProductsCollection
     ? flattenConnection(featuredProductsCollection.products)
     : null;
@@ -28,7 +29,7 @@ export default function Beautycat({country = {isoCode: 'US'}}) {
     collections && collections.length > 1 ? collections[1] : collections[0];
 
   return (
-    <Layout>
+   
       <div className="relative mb-12">
         <Welcome />
         <div className="bg-white p-12 shadow-xl rounded-xl mb-10">
@@ -65,48 +66,48 @@ export default function Beautycat({country = {isoCode: 'US'}}) {
             </>
           ) : null}
         </div>
-        <FeaturedCollection collection={featuredCollection} />
+        
       </div>
-    </Layout>
+    
   );
 }
 
 const QUERY = gql`
-  query indexContent(
-    $country: CountryCode
-    $numCollections: Int = 2
-    $numProducts: Int = 3
-    $numProductMetafields: Int = 0
-    $numProductVariants: Int = 250
-    $numProductMedia: Int = 1
-    $numProductVariantMetafields: Int = 10
-    $numProductVariantSellingPlanAllocations: Int = 0
-    $numProductSellingPlanGroups: Int = 0
-    $numProductSellingPlans: Int = 0
-  ) @inContext(country: $country) {
-    collections(first: $numCollections) {
-      edges {
-        node {
-          descriptionHtml
-          description
-          handle
-          id
-          title
-          image {
-            ...ImageFragment
-          }
-          products(first: $numProducts) {
-            edges {
-              node {
-                ...ProductProviderFragment
-              }
+query indexContent(
+  $country: CountryCode
+  # $numCollections: Int = 2
+  # $numProducts: Int = 3
+  $numProductMetafields: Int = 0
+  $numProductVariants: Int = 250
+  $numProductMedia: Int = 1
+  $numProductVariantMetafields: Int = 10
+  $numProductVariantSellingPlanAllocations: Int = 0
+  $numProductSellingPlanGroups: Int = 0
+  $numProductSellingPlans: Int = 0
+) @inContext(country: $country) {
+  collections(first: 3) {
+    edges {
+      node {
+        descriptionHtml
+        description
+        handle
+        id
+        title
+        image {
+          ...ImageFragment
+        }
+        products(first: 7) {
+          edges {
+            node {
+              ...ProductProviderFragment
             }
           }
         }
       }
     }
   }
+}
 
-  ${ProductProviderFragment}
-  ${Image.Fragment}
+${ProductProviderFragment}
+${Image.Fragment}
 `;
