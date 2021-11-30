@@ -76,7 +76,7 @@ export default function Index({country = {isoCode: 'US'}}) {
   });
 
   const collections = data ? flattenConnection(data.collections) : [];
-  const featuredProductsCollection = collections[2];
+  const featuredProductsCollection = collections[3];
   const featuredProducts = featuredProductsCollection
     ? flattenConnection(featuredProductsCollection.products)
     : null;
