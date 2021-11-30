@@ -20,7 +20,7 @@ export default function Footer({ collection, product }) {
     });
 
     const allcollections = data ? flattenConnection(data.collections) : null;
-  //console.log('myallcollection', allcollections)
+  console.log('footermyallcollection', allcollections)
   return (
     <footer role="contentinfo">
       <div className="relative bg-white border-t border-b border-black border-opacity-5">
