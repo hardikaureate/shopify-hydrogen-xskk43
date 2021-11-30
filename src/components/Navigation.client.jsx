@@ -62,5 +62,4 @@ const QUERY = gql`
       }
     }
   }
-  ${Image.Fragment}
 `;
