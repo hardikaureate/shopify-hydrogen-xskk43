@@ -123,7 +123,7 @@ export default function Index({country = {isoCode: 'US'}}) {
           ) : null}
         </div>
         <FeaturedCollection collection={featuredCollection} />
-        {/* <Beautycat /> */}
+        <Beautycat />
         <div className="yotpo yotpo-pictures-widget" data-gallery-id="60789ba4d65534434cb467da" style={{width: '90%', margin: 'auto', paddingBottom: '50px'}}>
     </div>
       </div>
