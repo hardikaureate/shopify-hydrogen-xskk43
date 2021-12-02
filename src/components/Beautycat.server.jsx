@@ -13,11 +13,8 @@ import ProductCard from '../components/ProductCard.server';
 
 export default function Beautycat({country = {isoCode: 'US'}}) {
   const {data} = useShopQuery({
-    query: QUERY,
-    variables: {
-      country: country.isoCode,
-      //numCollections: 5  
-    },
+    query: QUERY
+    
   });
 
   const collections = data ? flattenConnection(data.collections) : [];
