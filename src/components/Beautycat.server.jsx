@@ -20,7 +20,6 @@ export default function Beautycat({ country = { isoCode: 'US' } }) {
     },
   });
 
-
   const collections = data ? flattenConnection(data.collections) : [];
   const featuredProductsCollection = collections[2];
   const featuredProducts = featuredProductsCollection
