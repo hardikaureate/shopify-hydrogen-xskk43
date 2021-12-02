@@ -8,7 +8,7 @@ import {
 import gql from 'graphql-tag';
 
 
-import ProductCard from '../components/ProductCard.server';
+import ProductCard from './ProductCard.server';
 
 
 export default function Beautycat({country = {isoCode: 'US'}}) {
@@ -109,3 +109,7 @@ query indexContent(
 ${ProductProviderFragment}
 ${Image.Fragment}
 `;
+
+
+
+
