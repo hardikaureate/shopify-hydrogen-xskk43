@@ -16,7 +16,7 @@ export default function Beautycat({country = {isoCode: 'US'}}) {
     query: QUERY,
     variables: {
       country: country.isoCode,
-      //numCollections: 5
+      //numCollections: 5  
     },
   });
 
@@ -32,7 +32,7 @@ export default function Beautycat({country = {isoCode: 'US'}}) {
   return (
    
       <div className="relative mb-12">
-        <Welcome />
+        
         <div className="bg-white p-12 shadow-xl rounded-xl mb-10">
           {featuredProductsCollection ? (
             <>
