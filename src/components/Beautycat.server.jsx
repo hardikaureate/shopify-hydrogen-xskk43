@@ -1,7 +1,3 @@
-
-
-
-
 import {
   useShopQuery,
   flattenConnection,
@@ -12,7 +8,7 @@ import {
 import gql from 'graphql-tag';
 import NotFound from './NotFound.server';
 //import FeaturedCollection from './FeaturedCollection.server';
-import ProductCard from './ProductCard.server';
+import ProductCard from '../components/ProductCard.server';
 //import Layout from './Layout.server';
 
 export default function Beautycat({ country = { isoCode: 'US' } }) {
