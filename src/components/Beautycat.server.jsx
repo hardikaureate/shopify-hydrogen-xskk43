@@ -16,7 +16,7 @@ export default function Beautycat({country = {isoCode: 'US'}}) {
     query: QUERY,
     variables: {
       country: country.isoCode,
-      numCollections: 5
+      //numCollections: 5
     },
   });
 
@@ -79,7 +79,7 @@ query indexContent(
   # $numCollections: Int = 2
   # $numProducts: Int = 3
   $numProductMetafields: Int = 0
-  $numProductVariants: Int = 250
+  $numProductVariants: Int = 20
   $numProductMedia: Int = 1
   $numProductVariantMetafields: Int = 10
   $numProductVariantSellingPlanAllocations: Int = 0
